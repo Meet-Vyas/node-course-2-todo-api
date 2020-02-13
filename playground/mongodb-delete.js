@@ -6,10 +6,10 @@ MongoClient.connect('mongodb://localhost:27017/TodoApp', (err, db) => {
 	}
 	console.log('success');
 
-	//deleteMany
-	// db.collection('Todos').deleteMany({text: 'Eat lunch'}).then((result) => {
-	// 	console.log(result);
-	// });
+	// deleteMany
+	db.collection('Users').deleteMany({name: 'Meet'}).then((result) => {
+		console.log(result);
+	});
 
 	//deleteOne
 	// db.collection('Todos').deleteOne({text: 'Hello'}).then((result) => {
@@ -25,9 +25,9 @@ MongoClient.connect('mongodb://localhost:27017/TodoApp', (err, db) => {
 	// 	console.log(result);
 	// });
 
-	db.collection('Todos').findOneAndDelete({_id: new ObjectID('5e44b45f492927a3e7ce9059')}).then((result) => {
-		console.log(JSON.stringify(result, undefined, 2));
-	});
+	// db.collection('Todos').findOneAndDelete({_id: new ObjectID('5e44b45f492927a3e7ce9059')}).then((result) => {
+	// 	console.log(JSON.stringify(result, undefined, 2));
+	// });
 
 	db.close();
 });
