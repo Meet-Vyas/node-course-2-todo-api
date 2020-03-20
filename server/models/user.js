@@ -52,6 +52,23 @@ UserSchema.methods.generateAuthToken = function () {
 	});
 };
 
+// instance method - removeToken, how? don't know
+// we'll be removing an object from the array whose token matches the required value in the dB
+UserSchema.methods.removeToken = function (token) {
+	// what is this used for?
+	var user = this;
+
+	return user.update({
+		// $pull removes the value specified in the {} from the dB
+		$pull: {
+			// can also be done tokens: {token} ES6 feature
+			tokens: {
+				token: token
+			}
+		}
+	});
+};
+
 UserSchema.statics.findByToken = function (token) {
 	var User = this;
 	var decoded;

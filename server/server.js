@@ -119,6 +119,17 @@ app.post('/users/login', (req, res) => {
 	});
 });
 
+// deleting the token of the user
+// DELETE /users/me/tokens
+// do not need to pass the token, it is rather stored
+app.delete('/users/me/token', authenticate, (req, res) => {
+	req.user.removeToken(req.token).then(() => {
+		res.send("Token removed: ");
+	}, () => {
+		res.status(400).send("Something went wrong: ");
+	});
+});
+
 app.listen(port, () => {
 	console.log(`Started on port ${port}`);
 });
