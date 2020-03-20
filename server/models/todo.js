@@ -14,6 +14,12 @@ var Todo = mongoose.model('Todo', {
 	completedAt: {
 		type: Number,
 		default: null
+	},
+	// only let the users who create delete or update the todo
+	// name can be anything, not necessary to use "_" as well
+	_creator: {
+		type: mongoose.Schema.Types.ObjectId,
+		require: true,
 	}
 });
 
